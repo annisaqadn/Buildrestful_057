@@ -29,6 +29,7 @@ public class ProductServiceController {
         honey.setName("Honey"); //menambahkan nama Produk
         honey.setPrice(10000);
         honey.setDisc(5);
+        honey.setTotal(honey.getPrice()-(honey.getPrice()*honey.getDisc()/100));
         productRepo.put(honey.getId(), honey);
         
         Product almond = new Product(); //mendeklarasikan produk almond
@@ -36,6 +37,7 @@ public class ProductServiceController {
         almond.setName("Almond"); //menambahkan nama produk
         almond.setPrice(30000);
         almond.setDisc(10);
+        almond.setTotal(almond.getPrice()-(almond.getPrice()*almond.getDisc()/100));
         productRepo.put(almond.getId(), almond);
     }
     //Method DELETE
@@ -53,6 +55,7 @@ public class ProductServiceController {
         }else{ //kondisi jika ID ada
         productRepo.remove(id);
         product.setId(id);
+        product.setTotal(product.getPrice()-(product.getPrice()*product.getDisc()/100));
         productRepo.put(id, product);
         return new ResponseEntity<>("Product is updated successfully", HttpStatus.OK); //menampilkan pesan ketika sukses mengubah nama produk pada ID yang diminta
         }
@@ -65,6 +68,7 @@ public class ProductServiceController {
             return new ResponseEntity<>("Please enter another ID, because your entered ID already exists", HttpStatus.NOT_FOUND); //menampilkan pesan untuk memasukkan ID yang lain ketika kita memasukkan data yang IDnya sudah ada
         } else { //kondisi jika ID belum ada
         productRepo.put(product.getId(), product);
+        product.setTotal(product.getPrice()-(product.getPrice()*product.getDisc()/100));
         return new ResponseEntity<>("Product is created successfully", HttpStatus.CREATED); //menampilkan pesan "Produk sukses ditambahkan" ketika sukses menambahkan data produk
         }
     }
