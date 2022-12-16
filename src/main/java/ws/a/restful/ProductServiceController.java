@@ -27,11 +27,15 @@ public class ProductServiceController {
         Product honey = new Product(); //mendeklarasikan produk honey
         honey.setId("1"); //menambahkan ID produk
         honey.setName("Honey"); //menambahkan nama Produk
+        honey.setPrice(10000);
+        honey.setDisc(5);
         productRepo.put(honey.getId(), honey);
         
         Product almond = new Product(); //mendeklarasikan produk almond
         almond.setId("2"); //menambahkan ID produk
         almond.setName("Almond"); //menambahkan nama produk
+        almond.setPrice(30000);
+        almond.setDisc(10);
         productRepo.put(almond.getId(), almond);
     }
     //Method DELETE
